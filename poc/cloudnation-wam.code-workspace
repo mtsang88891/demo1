@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "name": "WAM Workspace",
+      "path": "C:\\DEVOPS\\CloudNation\\wam-workspace"
+    },
+    {
+      "name": "CloudNation Modules",
+      "path": "C:\\DEVOPS\\CloudNation\\CloudNationHQ"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "files.associations": {
+      "*.tf": "terraform",
+      "*.bicep": "bicep"
+    },
+    "continue.enableTabAutocomplete": true,
+    "terraform.languageServer.enable": true
+  },
+  "extensions": {
+    "recommendations": [
+      "Continue.continue",
+      "hashicorp.terraform",
+      "ms-azuretools.vscode-azureterraform",
+      "ms-azuretools.vscode-bicep"
+    ]
+  }
+}
