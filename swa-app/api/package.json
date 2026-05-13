@@ -1,0 +1,14 @@
+{
+  "name": "stapp-chatbot-api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "chat/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.5.0",
+    "openai": "^4.57.0"
+  }
+}

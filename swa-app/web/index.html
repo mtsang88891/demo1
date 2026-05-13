@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managed Identity Chatbot</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="layout">
+    <section class="panel">
+      <h1>Azure Static Web App AI Chat</h1>
+      <p class="subtitle">Managed identity end-to-end. No API keys in browser code.</p>
+
+      <label for="rules">Runtime Prompt Rules (optional)</label>
+      <textarea id="rules" rows="4" placeholder="Add temporary rules for this conversation."></textarea>
+
+      <label for="prompt">Your Message</label>
+      <textarea id="prompt" rows="5" placeholder="Ask a question..."></textarea>
+
+      <button id="send">Send</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Assistant Response</h2>
+      <pre id="response" class="response">No response yet.</pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
