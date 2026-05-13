@@ -26,6 +26,21 @@
       <h2>Assistant Response</h2>
       <pre id="response" class="response">No response yet.</pre>
     </section>
+
+    <section class="panel">
+      <h2>Infrastructure Deployment</h2>
+      <p class="subtitle">Deploy the suggested infrastructure to Azure.</p>
+
+      <label for="deployment-name">Deployment Name</label>
+      <input id="deployment-name" type="text" placeholder="e.g., my-app-deployment" />
+
+      <label for="deployment-description">Description</label>
+      <textarea id="deployment-description" rows="3" placeholder="Describe what you want to deploy..."></textarea>
+
+      <button id="deploy">Deploy Infrastructure</button>
+      <p id="deploy-status" class="status"></p>
+      <pre id="deploy-response" class="response">No deployment yet.</pre>
+    </section>
   </main>
 
   <script src="app.js"></script>
