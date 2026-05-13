@@ -1,29 +1,24 @@
-const { DefaultAzureCredential, ManagedIdentityCredential, getBearerTokenProvider } = require("@azure/identity");
 const { AzureOpenAI } = require("openai");
 
 const MAX_MESSAGE_CHARS = 4000;
 const MAX_RULES_CHARS = 2000;
-const TOKEN_SCOPE = "https://cognitiveservices.azure.com/.default";
-
-function buildCredential() {
-  // In Azure App Service / Functions, use system-assigned managed identity
-  // ManagedIdentityCredential without parameters uses the system-assigned identity
-  return new ManagedIdentityCredential();
-}
 
 function getClient() {
   const endpoint = process.env.OPENAI_ENDPOINT;
+  const apiKey = process.env.OPENAI_API_KEY;
+  
   if (!endpoint) {
     throw new Error("OPENAI_ENDPOINT is required.");
   }
-
-  const credential = buildCredential();
-  const azureADTokenProvider = getBearerTokenProvider(credential, TOKEN_SCOPE);
+  
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is required.");
+  }
 
   return new AzureOpenAI({
     endpoint,
-    apiVersion: "2024-10-21",
-    azureADTokenProvider
+    apiKey,
+    apiVersion: "2024-10-21"
   });
 }
 
