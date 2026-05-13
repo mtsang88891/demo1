@@ -53,6 +53,15 @@ textarea {
   font: inherit;
 }
 
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font: inherit;
+  margin-top: 0.35rem;
+}
+
 button {
   margin-top: 1rem;
   background: var(--accent);
@@ -61,6 +70,20 @@ button {
   border-radius: 8px;
   padding: 0.7rem 1rem;
   cursor: pointer;
+}
+
+button.secondary-button {
+  background: #4a90a4;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+button.secondary-button:hover {
+  background: #3a7a94;
+}
+
+button:hover {
+  opacity: 0.9;
 }
 
 button:disabled {

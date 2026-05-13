@@ -4,6 +4,7 @@ const rulesInput = document.getElementById("rules");
 const statusOutput = document.getElementById("status");
 const responseOutput = document.getElementById("response");
 const deployButton = document.getElementById("deploy");
+const quickDeployButton = document.getElementById("quick-deploy");
 const deployNameInput = document.getElementById("deployment-name");
 const deployDescriptionInput = document.getElementById("deployment-description");
 const deployStatusOutput = document.getElementById("deploy-status");
@@ -94,3 +95,28 @@ async function deployInfrastructure() {
 
 sendButton.addEventListener("click", sendPrompt);
 deployButton.addEventListener("click", deployInfrastructure);
+quickDeployButton.addEventListener("click", quickDeploy);
+
+async function quickDeploy() {
+  const terraformCode = responseOutput.textContent;
+
+  if (!terraformCode || terraformCode === "No response yet.") {
+    deployStatusOutput.textContent = "Generate infrastructure suggestion first by sending a prompt.";
+    return;
+  }
+
+  // Auto-generate deployment name and description
+  const timestamp = new Date().toISOString().split('T')[0].replace(/-/g, '');
+  const autoDeploymentName = `deploy-${timestamp}-${Math.random().toString(36).substr(2, 5)}`;
+  const autoDescription = `Quick deployment of suggested infrastructure (${new Date().toLocaleTimeString()})`;
+
+  // Set the fields
+  deployNameInput.value = autoDeploymentName;
+  deployDescriptionInput.value = autoDescription;
+
+  // Scroll to deployment section
+  document.querySelector("section.panel:nth-of-type(3)").scrollIntoView({ behavior: "smooth" });
+
+  // Deploy
+  await deployInfrastructure();
+}
