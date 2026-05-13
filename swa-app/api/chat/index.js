@@ -6,9 +6,9 @@ const MAX_RULES_CHARS = 2000;
 const TOKEN_SCOPE = "https://cognitiveservices.azure.com/.default";
 
 function buildCredential() {
-  // In Azure App Service / Functions, DefaultAzureCredential automatically uses the attached managed identity
-  // Don't pass clientId to ManagedIdentityCredential - it's not supported in this environment
-  return new DefaultAzureCredential();
+  // In Azure App Service / Functions, use system-assigned managed identity
+  // ManagedIdentityCredential without parameters uses the system-assigned identity
+  return new ManagedIdentityCredential();
 }
 
 function getClient() {
