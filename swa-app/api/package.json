@@ -8,6 +8,8 @@
     "node": ">=18"
   },
   "dependencies": {
-    "openai": "^4.57.0"
+    "openai": "^4.57.0",
+    "@azure/identity": "^4.5.0",
+    "@azure/arm-resources": "7.0.0"
   }
 }
