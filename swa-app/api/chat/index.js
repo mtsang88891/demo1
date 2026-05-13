@@ -1,4 +1,5 @@
 const { AzureOpenAI } = require("openai");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 const MAX_MESSAGE_CHARS = 4000;
 const MAX_RULES_CHARS = 2000;
@@ -11,13 +12,20 @@ function getClient() {
     throw new Error("OPENAI_ENDPOINT is required.");
   }
   
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is required.");
+  // Support both API key (for local dev) and managed identity (for production)
+  if (apiKey) {
+    return new AzureOpenAI({
+      endpoint,
+      apiKey,
+      apiVersion: "2024-10-21"
+    });
   }
-
+  
+  // Use managed identity for Azure authentication
+  const credential = new DefaultAzureCredential();
   return new AzureOpenAI({
     endpoint,
-    apiKey,
+    credential,
     apiVersion: "2024-10-21"
   });
 }
