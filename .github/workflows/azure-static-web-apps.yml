@@ -14,6 +14,7 @@ on:
     paths:
       - "swa-app/**"
       - ".github/workflows/azure-static-web-apps.yml"
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
